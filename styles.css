@@ -1,0 +1,11 @@
+* {
+  background-color: darkgrey;
+}
+
+#chessboard {
+  position: absolute;
+  height: 50em;
+  width: 50em;
+  margin: auto;
+  background-color: gray;
+}
