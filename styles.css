@@ -3,9 +3,16 @@
 }
 
 #chessboard {
-  position: absolute;
-  height: 50em;
-  width: 50em;
-  margin: auto;
+  display: flex;
+  min-height: 65vh;
+  min-width: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   background-color: gray;
+}
+
+#square {
+  height: 50px;
+  width: 50px;
 }
