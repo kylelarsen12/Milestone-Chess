@@ -13,3 +13,11 @@
   height: 12.5%;
   width: 12.5%;
 }
+
+.whiteSquare {
+  background-color: white;
+}
+
+.blackSquare {
+  background-color: rgba(48, 39, 39, 0.863);
+}

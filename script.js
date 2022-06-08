@@ -1,44 +1,3 @@
-/*
-//Function to draw odd ranks
-function drawOddRank() {
-  for (let i = 1; i <= 8; i++) {
-    let square = document.createElement("div");
-    if (i % 2 === 1) {
-      square.classList.add("blacksquare");
-      document.getElementById("chessboard").appendChild(square);
-    } else {
-      square.classList.add("whitesquare");
-      document.getElementById("chessboard").appendChild(square);
-    }
-  }
-}
-
-//Function to draw even ranks
-function drawEvenRank() {
-  for (let i = 1; i <= 8; i++) {
-    let square = document.createElement("div");
-    if (i % 2 === 0) {
-      square.classList.add("blacksquare");
-      document.getElementById("chessboard").appendChild(square);
-    } else {
-      square.classList.add("whitesquare");
-      document.getElementById("chessboard").appendChild(square);
-    }
-  }
-}
-
-//Even rank function
-
-drawEvenRank();
-drawOddRank();
-drawEvenRank();
-drawOddRank();
-drawEvenRank();
-drawOddRank();
-drawEvenRank();
-drawOddRank();
-*/
-
 //define ranks and files
 let rank = [1, 2, 3, 4, 5, 6, 7, 8];
 let file = ["a", "b", "c", "d", "e", "f", "g", "h"];
@@ -47,23 +6,31 @@ let file = ["a", "b", "c", "d", "e", "f", "g", "h"];
 function createBoard() {
   let chessboard = [];
   let board = document.getElementById("gameBoard");
-  let squareName;
+  let newTile;
+  let colorChecker = [];
 
-  //nested for loop to go through ranks and files
-  for (let i = 0; i < rank.length; i++) {
-    for (let j = 0; j < file.length; j++) {
+  //nested for loop to go through ranks and files (done backwards so board starts with a8 at top left corner) add to chessboard array
+  for (let j = file.length - 1; j >= 0; j--) {
+    for (let i = 0; i < rank.length; i++) {
+      colorChecker.push(i + j + 2);
       chessboard.push(`${file[i]}${rank[j]}`);
-      squareName = file[i] + rank[j];
     }
   }
 
-  //for loop to create div and name each square
+  //for loop to create div, create id, and color each square
   for (let i = 0; i < chessboard.length; i++) {
-    let newTile = document.createElement("div");
+    newTile = document.createElement("div");
     newTile.id = chessboard[i];
     newTile.textContent = chessboard[i];
     board.append(newTile);
+    if (colorChecker[i] % 2 === 0) {
+      newTile.className = "blackSquare";
+    } else {
+      newTile.className = "whiteSquare";
+    }
   }
+
+  //function to find if dark or light square (odd ranks start dark end white)
 }
 
 createBoard();
