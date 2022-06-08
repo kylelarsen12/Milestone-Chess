@@ -3,10 +3,11 @@
 }
 
 #gameBoard {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
-  height: 600px;
+  width: 40em;
+  height: 40em;
 }
 
 #gameBoard div {

@@ -30,7 +30,72 @@ function createBoard() {
     }
   }
 
-  //function to find if dark or light square (odd ranks start dark end white)
+  //Create pieces class
+  class Piece {
+    constructor(color, type, image, coordinate) {
+      this.color = color;
+      this.type = type;
+      this.image = image;
+      this.coordinate = coordinate;
+    }
+
+    renderPiece(coordinate) {
+      let newPiece = document.createElement("img");
+      newPiece.src = this.image;
+      let piecePlace = document.getElementById(coordinate);
+      piecePlace.append(newPiece);
+    }
+  }
+
+  //Black pieces? (female names for black pawns (using names for pawns to tell them apart more easily))
+  let Anna = new Piece("black", "pawn", "./assets/black-pawn.png", "a7");
+  Anna.renderPiece("a7");
+
+  let Betty = new Piece("black", "pawn", "./assets/black-pawn.png", "b7");
+  Betty.renderPiece("b7");
+
+  let Claire = new Piece("black", "pawn", "./assets/black-pawn.png", "c7");
+  Claire.renderPiece("c7");
+
+  let Danielle = new Piece("black", "pawn", "./assets/black-pawn.png", "d7");
+  Danielle.renderPiece("d7");
+
+  let Erica = new Piece("black", "pawn", "./assets/black-pawn.png", "e7");
+  Erica.renderPiece("e7");
+
+  let Fiona = new Piece("black", "pawn", "./assets/black-pawn.png", "f7");
+  Fiona.renderPiece("f7");
+
+  let Grace = new Piece("black", "pawn", "./assets/black-pawn.png", "g7");
+  Grace.renderPiece("g7");
+
+  let Hanna = new Piece("black", "pawn", "./assets/black-pawn.png", "h7");
+  Hanna.renderPiece("h7");
+
+  //White pieces? (male names for white pawns)
+  let Alfred = new Piece("white", "pawn", "./assets/white-pawn.png", "a2");
+  Alfred.renderPiece("a2");
+
+  let Ben = new Piece("white", "pawn", "./assets/white-pawn.png", "b2");
+  Ben.renderPiece("b2");
+
+  let Charlie = new Piece("white", "pawn", "./assets/white-pawn.png", "c2");
+  Charlie.renderPiece("c2");
+
+  let Don = new Piece("white", "pawn", "./assets/white-pawn.png", "d2");
+  Don.renderPiece("d2");
+
+  let Edward = new Piece("white", "pawn", "./assets/white-pawn.png", "e2");
+  Edward.renderPiece("e2");
+
+  let Frankie = new Piece("white", "pawn", "./assets/white-pawn.png", "f2");
+  Frankie.renderPiece("f2");
+
+  let George = new Piece("white", "pawn", "./assets/white-pawn.png", "g2");
+  George.renderPiece("g2");
+
+  let Harry = new Piece("white", "pawn", "./assets/white-pawn.png", "h2");
+  Harry.renderPiece("h2");
 }
 
 createBoard();
