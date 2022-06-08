@@ -1,4 +1,5 @@
 //Function to draw odd ranks
+/*
 function drawOddRank() {
   for (let i = 1; i <= 8; i++) {
     let square = document.createElement("div");
@@ -36,3 +37,4 @@ drawEvenRank();
 drawOddRank();
 drawEvenRank();
 drawOddRank();
+*/
