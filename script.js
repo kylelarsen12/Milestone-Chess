@@ -21,7 +21,6 @@ function createBoard() {
   for (let i = 0; i < chessboard.length; i++) {
     newTile = document.createElement("div");
     newTile.id = chessboard[i];
-    newTile.textContent = chessboard[i];
     board.append(newTile);
     if (colorChecker[i] % 2 === 0) {
       newTile.className = "blackSquare";
@@ -47,7 +46,7 @@ function createBoard() {
     }
   }
 
-  //Black pieces? (female names for black pawns (using names for pawns to tell them apart more easily))
+  //black pawns (female names for black pawns (using names for pawns to tell them apart more easily))
   let Anna = new Piece("black", "pawn", "./assets/black-pawn.png", "a7");
   Anna.renderPiece("a7");
 
@@ -72,7 +71,57 @@ function createBoard() {
   let Hanna = new Piece("black", "pawn", "./assets/black-pawn.png", "h7");
   Hanna.renderPiece("h7");
 
-  //White pieces? (male names for white pawns)
+  //black pieces
+  let blackARook = new Piece("black", "rook", "./assets/black-rook.png", "a8");
+  blackARook.renderPiece("a8");
+
+  let blackBKnight = new Piece(
+    "black",
+    "knight",
+    "./assets/black-knight.png",
+    "b8"
+  );
+  blackBKnight.renderPiece("b8");
+
+  let blackGKnight = new Piece(
+    "black",
+    "knight",
+    "./assets/black-knight.png",
+    "g8"
+  );
+  blackGKnight.renderPiece("g8");
+
+  let blackLightBishop = new Piece(
+    "black",
+    "bishop",
+    "./assets/black-bishop.png",
+    "c8"
+  );
+  blackLightBishop.renderPiece("c8");
+
+  let blackQueen = new Piece(
+    "black",
+    "queen",
+    "./assets/black-queen.png",
+    "d8"
+  );
+  blackQueen.renderPiece("d8");
+
+  let blackKing = new Piece("black", "king", "./assets/black-king.png", "e8");
+  blackKing.renderPiece("e8");
+
+  let blackDarkBishop = new Piece(
+    "black",
+    "bishop",
+    "./assets/black-bishop.png",
+    "f8"
+  );
+  blackDarkBishop.renderPiece("f8");
+
+  let blackHRook = new Piece("black", "rook", "./assets/black-rook.png", "h8");
+  blackHRook.renderPiece("h8");
+
+  //White pawns (male names for white pawns)
   let Alfred = new Piece("white", "pawn", "./assets/white-pawn.png", "a2");
   Alfred.renderPiece("a2");
 
@@ -96,6 +145,56 @@ function createBoard() {
 
   let Harry = new Piece("white", "pawn", "./assets/white-pawn.png", "h2");
   Harry.renderPiece("h2");
+
+  //white pieces
+  let whiteARook = new Piece("white", "rook", "./assets/white-rook.png", "a1");
+  whiteARook.renderPiece("a1");
+
+  let whiteBKnight = new Piece(
+    "white",
+    "knight",
+    "./assets/white-knight.png",
+    "b1"
+  );
+  whiteBKnight.renderPiece("b1");
+
+  let whiteGKnight = new Piece(
+    "white",
+    "knight",
+    "./assets/white-knight.png",
+    "g1"
+  );
+  whiteGKnight.renderPiece("g1");
+
+  let whiteLightBishop = new Piece(
+    "white",
+    "bishop",
+    "./assets/white-bishop.png",
+    "c1"
+  );
+  whiteLightBishop.renderPiece("c1");
+
+  let whiteQueen = new Piece(
+    "white",
+    "queen",
+    "./assets/white-queen.png",
+    "d1"
+  );
+  whiteQueen.renderPiece("d1");
+
+  let whiteKing = new Piece("white", "king", "./assets/white-king.png", "e1");
+  whiteKing.renderPiece("e1");
+
+  let whiteDarkBishop = new Piece(
+    "white",
+    "bishop",
+    "./assets/white-bishop.png",
+    "f1"
+  );
+  whiteDarkBishop.renderPiece("f1");
+
+  let whiteHRook = new Piece("white", "rook", "./assets/white-rook.png", "h1");
+  whiteHRook.renderPiece("h1");
 }
 
 createBoard();
