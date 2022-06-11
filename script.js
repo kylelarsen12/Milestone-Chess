@@ -1,9 +1,11 @@
 //define ranks and files
-let rank = [1, 2, 3, 4, 5, 6, 7, 8];
-let file = ["a", "b", "c", "d", "e", "f", "g", "h"];
+const rank = [1, 2, 3, 4, 5, 6, 7, 8];
+const file = ["a", "b", "c", "d", "e", "f", "g", "h"];
+const fileNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
 let board = document.getElementById("gameBoard");
 let targetPiece;
 let selectedPiece;
+let targetSquare;
 //Create pieces class
 class Piece {
   constructor(color, type, image, coordinate, pieceID) {
@@ -20,7 +22,8 @@ class Piece {
     newPiece.src = this.image;
     newPiece.id = this.pieceID;
     newPiece.coordinate = coordinate;
-    newPiece.classList.add("piece", type);
+    newPiece.color = this.color;
+    newPiece.classList.add("piece", type, this.color);
     let piecePlace = document.getElementById(coordinate);
     piecePlace.append(newPiece);
   }
@@ -349,7 +352,7 @@ function createPieces() {
 }
 
 //Select pieces on clicks (maybe split into select piece then move piece?)
-async function selectPiece() {
+function selectPiece() {
   document.addEventListener("click", (e) => {
     targetPiece = e.target;
     if (targetPiece.classList.contains("piece")) {
@@ -360,28 +363,85 @@ async function selectPiece() {
 }
 
 // move piece on 2nd click (two click method)
-async function selectSquare() {
-  await selectPiece().then(
-    document.addEventListener("click", (e) => {
-      let targetSquare = e.target;
-      //Check for piece being selected & placed on board, can't select squares
+function selectSquare() {
+  document.addEventListener("click", (e) => {
+    targetSquare = e.target;
+    //Check for piece being selected & placed on board, can't select squares
+    if (
+      (!targetSquare.classList.contains("piece") &&
+        targetSquare.classList.contains("whiteSquare")) ||
+      targetSquare.classList.contains("blackSquare")
+    ) {
+      console.log(
+        `moved ${selectedPiece.id} from ${selectedPiece.coordinate} to ${targetSquare.id}`
+      );
+      //Check for piece capture
       if (
-        (!targetSquare.classList.contains("piece") &&
-          targetSquare.classList.contains("whiteSquare")) ||
-        targetSquare.classList.contains("blackSquare")
+        targetSquare.hasChildNodes() &&
+        targetSquare.lastChild.color != selectedPiece.color
       ) {
-        console.log(
-          `moved ${selectedPiece.id} from ${selectedPiece.coordinate} to ${targetSquare.id}`
-        );
-        targetSquare.append(selectedPiece);
+        targetSquare.removeChild(targetSquare.lastChild);
       }
-    })
-  );
+      targetSquare.append(selectedPiece);
+      selectedPiece.coordinate = targetSquare.id;
+    } //Can't eat own pieces
+    else if (targetSquare.lastChild.color == selectedPiece.color) {
+      console.log("you can't eat your own pieces");
+    }
+  });
 }
 
 createBoard();
 createPieces();
+selectPiece();
 selectSquare();
+
+//Capturing pieces
+//if square contains piece, check if opposite color and remove
+
+//Function to check whose turn it is then call select square each time?
+/*
+let currentTurn = 0;
+
+//white turn
+if (currentTurn === 0) {
+  whiteTurn();
+  currentTurn++;
+} else {
+  blackTurn();
+  currentTurn--;
+}
+*/
 
 //Need functions for: who's turn, what piece is clicked, what legal moves it has, moving piece, capturing pieces, is in check?/mate?/stalemate?, work on two clicks + drag/drop
 //Update board position?
+
+//Code from cody
+/*const pieces = [{
+        "black",
+        "pawn",
+        "./assets/black-pawn.png",
+        "h7",
+        "blkHPawn"
+    },
+    {
+        "black",
+        "rook",
+        "./assets/black-rook.png",
+        "a8",
+        "blkARook"
+    },
+    {
+        "black",
+        "knight",
+        "./assets/black-knight.png",
+        "b8",
+        "blkBKnight"
+    }
+]
+
+for(let i = 0; i<pieces.length; i++){
+    const newPiece =  new Piece(piece[i]);
+    newPiece.append(newPiece)
+}
+*/
