@@ -4,8 +4,41 @@ const file = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const fileNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
 let board = document.getElementById("gameBoard");
 let targetPiece;
-let selectedPiece;
 let targetSquare;
+let selectedPiece;
+let selectedSquare;
+let Anna,
+  Betty,
+  Claire,
+  Danielle,
+  Erica,
+  Fiona,
+  Grace,
+  Hanna,
+  Alfred,
+  Ben,
+  Charlie,
+  Don,
+  Edward,
+  Frankie,
+  George,
+  Harry,
+  blackARook,
+  blackBKnight,
+  blackGKnight,
+  blackDarkBishop,
+  blackLightBishop,
+  blackKing,
+  blackQueen,
+  blackHRook,
+  whiteARook,
+  whiteBKnight,
+  whiteGKnight,
+  whiteDarkBishop,
+  whiteLightBishop,
+  whiteKing,
+  whiteQueen,
+  whiteHRook;
 //Create pieces class
 class Piece {
   constructor(color, type, image, coordinate, pieceID) {
@@ -59,7 +92,7 @@ function createBoard() {
 //function to create pieces
 function createPieces() {
   //black pawns (female names for black pawns (using names for pawns to tell them apart more easily))
-  let Anna = new Piece(
+  Anna = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -68,7 +101,7 @@ function createPieces() {
   );
   Anna.renderPiece("a7", "pawn");
 
-  let Betty = new Piece(
+  Betty = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -77,7 +110,7 @@ function createPieces() {
   );
   Betty.renderPiece("b7", "pawn");
 
-  let Claire = new Piece(
+  Claire = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -86,7 +119,7 @@ function createPieces() {
   );
   Claire.renderPiece("c7", "pawn");
 
-  let Danielle = new Piece(
+  Danielle = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -95,7 +128,7 @@ function createPieces() {
   );
   Danielle.renderPiece("d7", "pawn");
 
-  let Erica = new Piece(
+  Erica = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -104,7 +137,7 @@ function createPieces() {
   );
   Erica.renderPiece("e7", "pawn");
 
-  let Fiona = new Piece(
+  Fiona = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -113,7 +146,7 @@ function createPieces() {
   );
   Fiona.renderPiece("f7", "pawn");
 
-  let Grace = new Piece(
+  Grace = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -122,7 +155,7 @@ function createPieces() {
   );
   Grace.renderPiece("g7", "pawn");
 
-  let Hanna = new Piece(
+  Hanna = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -132,7 +165,7 @@ function createPieces() {
   Hanna.renderPiece("h7", "pawn");
 
   //black pieces
-  let blackARook = new Piece(
+  blackARook = new Piece(
     "black",
     "rook",
     "./assets/black-rook.png",
@@ -141,7 +174,7 @@ function createPieces() {
   );
   blackARook.renderPiece("a8", "rook");
 
-  let blackBKnight = new Piece(
+  blackBKnight = new Piece(
     "black",
     "knight",
     "./assets/black-knight.png",
@@ -150,7 +183,7 @@ function createPieces() {
   );
   blackBKnight.renderPiece("b8", "knight");
 
-  let blackGKnight = new Piece(
+  blackGKnight = new Piece(
     "black",
     "knight",
     "./assets/black-knight.png",
@@ -159,7 +192,7 @@ function createPieces() {
   );
   blackGKnight.renderPiece("g8", "knight");
 
-  let blackLightBishop = new Piece(
+  blackLightBishop = new Piece(
     "black",
     "bishop",
     "./assets/black-bishop.png",
@@ -168,7 +201,7 @@ function createPieces() {
   );
   blackLightBishop.renderPiece("c8", "bishop");
 
-  let blackQueen = new Piece(
+  blackQueen = new Piece(
     "black",
     "queen",
     "./assets/black-queen.png",
@@ -177,7 +210,7 @@ function createPieces() {
   );
   blackQueen.renderPiece("d8", "queen");
 
-  let blackKing = new Piece(
+  blackKing = new Piece(
     "black",
     "king",
     "./assets/black-king.png",
@@ -186,7 +219,7 @@ function createPieces() {
   );
   blackKing.renderPiece("e8", "king");
 
-  let blackDarkBishop = new Piece(
+  blackDarkBishop = new Piece(
     "black",
     "bishop",
     "./assets/black-bishop.png",
@@ -195,7 +228,7 @@ function createPieces() {
   );
   blackDarkBishop.renderPiece("f8", "bishop");
 
-  let blackHRook = new Piece(
+  blackHRook = new Piece(
     "black",
     "rook",
     "./assets/black-rook.png",
@@ -205,7 +238,7 @@ function createPieces() {
   blackHRook.renderPiece("h8", "rook");
 
   //White pawns (male names for white pawns)
-  let Alfred = new Piece(
+  Alfred = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -214,7 +247,7 @@ function createPieces() {
   );
   Alfred.renderPiece("a2", "pawn");
 
-  let Ben = new Piece(
+  Ben = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -223,7 +256,7 @@ function createPieces() {
   );
   Ben.renderPiece("b2", "pawn");
 
-  let Charlie = new Piece(
+  Charlie = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -232,7 +265,7 @@ function createPieces() {
   );
   Charlie.renderPiece("c2", "pawn");
 
-  let Don = new Piece(
+  Don = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -241,7 +274,7 @@ function createPieces() {
   );
   Don.renderPiece("d2", "pawn");
 
-  let Edward = new Piece(
+  Edward = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -250,7 +283,7 @@ function createPieces() {
   );
   Edward.renderPiece("e2", "pawn");
 
-  let Frankie = new Piece(
+  Frankie = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -259,7 +292,7 @@ function createPieces() {
   );
   Frankie.renderPiece("f2", "pawn");
 
-  let George = new Piece(
+  George = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -268,7 +301,7 @@ function createPieces() {
   );
   George.renderPiece("g2", "pawn");
 
-  let Harry = new Piece(
+  Harry = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -278,7 +311,7 @@ function createPieces() {
   Harry.renderPiece("h2", "pawn");
 
   //white pieces
-  let whiteARook = new Piece(
+  whiteARook = new Piece(
     "white",
     "rook",
     "./assets/white-rook.png",
@@ -287,7 +320,7 @@ function createPieces() {
   );
   whiteARook.renderPiece("a1", "rook");
 
-  let whiteBKnight = new Piece(
+  whiteBKnight = new Piece(
     "white",
     "knight",
     "./assets/white-knight.png",
@@ -296,7 +329,7 @@ function createPieces() {
   );
   whiteBKnight.renderPiece("b1", "knight");
 
-  let whiteGKnight = new Piece(
+  whiteGKnight = new Piece(
     "white",
     "knight",
     "./assets/white-knight.png",
@@ -305,7 +338,7 @@ function createPieces() {
   );
   whiteGKnight.renderPiece("g1", "knight");
 
-  let whiteLightBishop = new Piece(
+  whiteLightBishop = new Piece(
     "white",
     "bishop",
     "./assets/white-bishop.png",
@@ -314,7 +347,7 @@ function createPieces() {
   );
   whiteLightBishop.renderPiece("c1", "bishop");
 
-  let whiteQueen = new Piece(
+  whiteQueen = new Piece(
     "white",
     "queen",
     "./assets/white-queen.png",
@@ -323,7 +356,7 @@ function createPieces() {
   );
   whiteQueen.renderPiece("d1", "queen");
 
-  let whiteKing = new Piece(
+  whiteKing = new Piece(
     "white",
     "king",
     "./assets/white-king.png",
@@ -332,7 +365,7 @@ function createPieces() {
   );
   whiteKing.renderPiece("e1", "king");
 
-  let whiteDarkBishop = new Piece(
+  whiteDarkBishop = new Piece(
     "white",
     "bishop",
     "./assets/white-bishop.png",
@@ -341,7 +374,7 @@ function createPieces() {
   );
   whiteDarkBishop.renderPiece("f1", "bishop");
 
-  let whiteHRook = new Piece(
+  whiteHRook = new Piece(
     "white",
     "rook",
     "./assets/white-rook.png",
@@ -353,48 +386,59 @@ function createPieces() {
 
 //Select pieces on clicks (maybe split into select piece then move piece?)
 function selectPiece() {
+  document.addEventListener(
+    "click",
+    (e) => {
+      targetPiece = e.target;
+      if (
+        (targetPiece.hasChildNodes() &&
+          targetPiece.classList.contains("whiteSquare")) ||
+        targetPiece.classList.contains("blackSquare")
+      ) {
+        console.log(`selected ${targetPiece.id}`);
+        selectedPiece = targetPiece.firstChild;
+        console.log(selectedPiece);
+      }
+    },
+    { once: true }
+  );
+}
+
+function selectSquare() {
   document.addEventListener("click", (e) => {
-    targetPiece = e.target;
-    if (targetPiece.classList.contains("piece")) {
-      console.log(`selected ${targetPiece.id}`);
-      selectedPiece = targetPiece;
+    targetSquare = e.target;
+    if (!targetSquare.hasChildNodes()) {
+      console.log(`moved ${selectedPiece.id} to ${targetSquare.id}`);
+      targetSquare.append(selectedPiece);
+      selectedPiece = null;
+      selectPiece();
+    } else if (
+      targetSquare.hasChildNodes() &&
+      targetSquare.firstChild != selectedPiece
+    ) {
+      targetPiece = targetSquare.firstChild;
+      console.log(`${selectedPiece.id} captured on ${targetSquare.id}`);
+      targetPiece.remove();
+      targetSquare.append(selectedPiece);
+      selectedPiece = null;
+      selectPiece();
     }
   });
 }
 
-// move piece on 2nd click (two click method)
-function selectSquare() {
-  document.addEventListener("click", (e) => {
-    targetSquare = e.target;
-    //Check for piece being selected & placed on board, can't select squares
-    if (
-      (!targetSquare.classList.contains("piece") &&
-        targetSquare.classList.contains("whiteSquare")) ||
-      targetSquare.classList.contains("blackSquare")
-    ) {
-      console.log(
-        `moved ${selectedPiece.id} from ${selectedPiece.coordinate} to ${targetSquare.id}`
-      );
-      //Check for piece capture
-      if (
-        targetSquare.hasChildNodes() &&
-        targetSquare.lastChild.color != selectedPiece.color
-      ) {
-        targetSquare.removeChild(targetSquare.lastChild);
-      }
-      targetSquare.append(selectedPiece);
-      selectedPiece.coordinate = targetSquare.id;
-    } //Can't eat own pieces
-    else if (targetSquare.lastChild.color == selectedPiece.color) {
-      console.log("you can't eat your own pieces");
-    }
-  });
+function checkCapture() {}
+
+function playGame() {
+  let turnText = document.getElementById("whoseTurn");
+  //if white turn
+  turnText.innerHTML = "<h2>White to move</h2>";
 }
 
 createBoard();
 createPieces();
 selectPiece();
 selectSquare();
+playGame();
 
 //Capturing pieces
 //if square contains piece, check if opposite color and remove
