@@ -6,8 +6,10 @@ const board = document.getElementById("gameBoard");
 let targetPiece, targetSquare, selectedPiece, selectedSquare;
 const moveSound = new Audio("./assets/pieceMove.mp3");
 const captureSound = new Audio("./assets/capturePiece.mp3");
-
 let turnNum = 0;
+let whiteCaptures = document.getElementById("whiteCapturedPieces");
+let blackCaptures = document.getElementById("blackCapturedPieces");
+
 //Create pieces class
 class Piece {
   constructor(color, type, image, coordinate, pieceID) {
@@ -356,7 +358,7 @@ function createPieces() {
 
 //Select pieces on clicks (maybe split into select piece then move piece?)
 function selectPiece() {
-  document.addEventListener(
+  board.addEventListener(
     "click",
     (e) => {
       targetPiece = e.target;
@@ -376,7 +378,7 @@ function selectPiece() {
 
 //select square to move selected piece to
 function selectSquare() {
-  document.addEventListener("click", (e) => {
+  board.addEventListener("click", (e) => {
     targetSquare = e.target;
     //If no piece on square, move piece to that square
     if (!targetSquare.hasChildNodes()) {
@@ -387,7 +389,9 @@ function selectSquare() {
       turnNum++;
       whoseTurn();
       selectPiece();
-    } else if (
+    }
+    //If square has piece, remove piece and append piece moving to that square
+    else if (
       targetSquare.hasChildNodes() &&
       targetSquare.firstChild != selectedPiece
     ) {
@@ -414,6 +418,7 @@ function whoseTurn() {
   }
 }
 
+//Run functions to run game
 createBoard();
 createPieces();
 selectPiece();
