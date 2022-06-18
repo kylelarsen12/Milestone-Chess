@@ -4,6 +4,8 @@ const file = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const numberedFiles = [1, 2, 3, 4, 5, 6, 7, 8];
 const board = document.getElementById("gameBoard");
 let targetPiece, targetSquare, selectedPiece, selectedSquare;
+const moveSound = new Audio("./assets/pieceMove.mp3");
+const captureSound = new Audio("./assets/capturePiece.mp3");
 
 let turnNum = 0;
 //Create pieces class
@@ -380,6 +382,7 @@ function selectSquare() {
     if (!targetSquare.hasChildNodes()) {
       console.log(`moved ${selectedPiece.id} to ${targetSquare.id}`);
       targetSquare.append(selectedPiece);
+      moveSound.play();
       selectedPiece = null;
       turnNum++;
       whoseTurn();
@@ -391,6 +394,7 @@ function selectSquare() {
       targetPiece = targetSquare.firstChild;
       console.log(`${selectedPiece.id} captured on ${targetSquare.id}`);
       targetPiece.remove();
+      captureSound.play();
       targetSquare.append(selectedPiece);
       selectedPiece = null;
       turnNum++;

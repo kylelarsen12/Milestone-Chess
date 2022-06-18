@@ -7,5 +7,6 @@ Todo:
 -Implement more specific rules (castling, en passant, draw conditions)
 -Enforce whose turn it is (disable moving pieces if wrong color)
 -Enforce legal moves like chess websites
+-Add sounds for above scenarios
 
 Source for chess pieces: https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
