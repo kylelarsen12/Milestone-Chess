@@ -56,3 +56,33 @@ img {
   left: 25%;
   -webkit-text-stroke: 3px black;
 }
+
+#whiteCapturedPieces {
+  display: flex;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  z-index: 15;
+  background: transparent;
+  left: 400px;
+  top: 336px;
+}
+
+#blackCapturedPieces {
+  display: flex;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  z-index: 15;
+  background: transparent;
+  left: 400px;
+  top: -200px;
+}
+
+#whiteCapturedPieces img {
+  padding: 10px;
+}
+
+#blackCapturedPieces img {
+  padding: 10px;
+}

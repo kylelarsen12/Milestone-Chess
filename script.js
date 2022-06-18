@@ -397,11 +397,18 @@ function selectSquare() {
     ) {
       targetPiece = targetSquare.firstChild;
       console.log(`${selectedPiece.id} captured on ${targetSquare.id}`);
-      targetPiece.remove();
       captureSound.play();
       targetSquare.append(selectedPiece);
       selectedPiece = null;
       turnNum++;
+      //Add captured pieces to each colors side of board
+      let capturedPiece = targetPiece;
+      if (targetPiece.classList.contains("white")) {
+        blackCaptures.appendChild(capturedPiece);
+      } else {
+        whiteCaptures.appendChild(capturedPiece);
+      }
+
       whoseTurn();
       selectPiece();
     }
