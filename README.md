@@ -4,6 +4,7 @@ Making a browser chess game
 Currently behaves mostly like an in person chess game
 
 Todo:
+-Add drag and drop for pieces
 -Implement more specific rules (castling, en passant, draw conditions)
 -Enforce whose turn it is (disable moving pieces if wrong color)
 -Enforce legal moves like chess websites
