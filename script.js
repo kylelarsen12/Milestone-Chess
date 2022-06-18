@@ -1,44 +1,11 @@
-//define ranks and files
+//define ranks and files and other variables used across functions
 const rank = [1, 2, 3, 4, 5, 6, 7, 8];
 const file = ["a", "b", "c", "d", "e", "f", "g", "h"];
-const fileNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
-let board = document.getElementById("gameBoard");
-let targetPiece;
-let targetSquare;
-let selectedPiece;
-let selectedSquare;
-let Anna,
-  Betty,
-  Claire,
-  Danielle,
-  Erica,
-  Fiona,
-  Grace,
-  Hanna,
-  Alfred,
-  Ben,
-  Charlie,
-  Don,
-  Edward,
-  Frankie,
-  George,
-  Harry,
-  blackARook,
-  blackBKnight,
-  blackGKnight,
-  blackDarkBishop,
-  blackLightBishop,
-  blackKing,
-  blackQueen,
-  blackHRook,
-  whiteARook,
-  whiteBKnight,
-  whiteGKnight,
-  whiteDarkBishop,
-  whiteLightBishop,
-  whiteKing,
-  whiteQueen,
-  whiteHRook;
+const numberedFiles = [1, 2, 3, 4, 5, 6, 7, 8];
+const board = document.getElementById("gameBoard");
+let targetPiece, targetSquare, selectedPiece, selectedSquare;
+
+let turnNum = 0;
 //Create pieces class
 class Piece {
   constructor(color, type, image, coordinate, pieceID) {
@@ -81,6 +48,7 @@ function createBoard() {
     newTile = document.createElement("div");
     newTile.id = chessboard[i];
     board.append(newTile);
+    //Create chessboard pattern of colors
     if (colorChecker[i] % 2 === 0) {
       newTile.className = "blackSquare";
     } else {
@@ -92,7 +60,7 @@ function createBoard() {
 //function to create pieces
 function createPieces() {
   //black pawns (female names for black pawns (using names for pawns to tell them apart more easily))
-  Anna = new Piece(
+  let Anna = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -101,7 +69,7 @@ function createPieces() {
   );
   Anna.renderPiece("a7", "pawn");
 
-  Betty = new Piece(
+  let Betty = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -110,7 +78,7 @@ function createPieces() {
   );
   Betty.renderPiece("b7", "pawn");
 
-  Claire = new Piece(
+  let Claire = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -119,7 +87,7 @@ function createPieces() {
   );
   Claire.renderPiece("c7", "pawn");
 
-  Danielle = new Piece(
+  let Danielle = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -128,7 +96,7 @@ function createPieces() {
   );
   Danielle.renderPiece("d7", "pawn");
 
-  Erica = new Piece(
+  let Erica = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -137,7 +105,7 @@ function createPieces() {
   );
   Erica.renderPiece("e7", "pawn");
 
-  Fiona = new Piece(
+  let Fiona = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -146,7 +114,7 @@ function createPieces() {
   );
   Fiona.renderPiece("f7", "pawn");
 
-  Grace = new Piece(
+  let Grace = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -155,7 +123,7 @@ function createPieces() {
   );
   Grace.renderPiece("g7", "pawn");
 
-  Hanna = new Piece(
+  let Hanna = new Piece(
     "black",
     "pawn",
     "./assets/black-pawn.png",
@@ -165,7 +133,7 @@ function createPieces() {
   Hanna.renderPiece("h7", "pawn");
 
   //black pieces
-  blackARook = new Piece(
+  let blackARook = new Piece(
     "black",
     "rook",
     "./assets/black-rook.png",
@@ -174,7 +142,7 @@ function createPieces() {
   );
   blackARook.renderPiece("a8", "rook");
 
-  blackBKnight = new Piece(
+  let blackBKnight = new Piece(
     "black",
     "knight",
     "./assets/black-knight.png",
@@ -183,7 +151,7 @@ function createPieces() {
   );
   blackBKnight.renderPiece("b8", "knight");
 
-  blackGKnight = new Piece(
+  let blackGKnight = new Piece(
     "black",
     "knight",
     "./assets/black-knight.png",
@@ -192,7 +160,7 @@ function createPieces() {
   );
   blackGKnight.renderPiece("g8", "knight");
 
-  blackLightBishop = new Piece(
+  let blackLightBishop = new Piece(
     "black",
     "bishop",
     "./assets/black-bishop.png",
@@ -201,7 +169,7 @@ function createPieces() {
   );
   blackLightBishop.renderPiece("c8", "bishop");
 
-  blackQueen = new Piece(
+  let blackQueen = new Piece(
     "black",
     "queen",
     "./assets/black-queen.png",
@@ -210,7 +178,7 @@ function createPieces() {
   );
   blackQueen.renderPiece("d8", "queen");
 
-  blackKing = new Piece(
+  let blackKing = new Piece(
     "black",
     "king",
     "./assets/black-king.png",
@@ -219,7 +187,7 @@ function createPieces() {
   );
   blackKing.renderPiece("e8", "king");
 
-  blackDarkBishop = new Piece(
+  let blackDarkBishop = new Piece(
     "black",
     "bishop",
     "./assets/black-bishop.png",
@@ -228,7 +196,7 @@ function createPieces() {
   );
   blackDarkBishop.renderPiece("f8", "bishop");
 
-  blackHRook = new Piece(
+  let blackHRook = new Piece(
     "black",
     "rook",
     "./assets/black-rook.png",
@@ -238,7 +206,7 @@ function createPieces() {
   blackHRook.renderPiece("h8", "rook");
 
   //White pawns (male names for white pawns)
-  Alfred = new Piece(
+  let Alfred = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -247,7 +215,7 @@ function createPieces() {
   );
   Alfred.renderPiece("a2", "pawn");
 
-  Ben = new Piece(
+  let Ben = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -256,7 +224,7 @@ function createPieces() {
   );
   Ben.renderPiece("b2", "pawn");
 
-  Charlie = new Piece(
+  let Charlie = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -265,7 +233,7 @@ function createPieces() {
   );
   Charlie.renderPiece("c2", "pawn");
 
-  Don = new Piece(
+  let Don = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -274,7 +242,7 @@ function createPieces() {
   );
   Don.renderPiece("d2", "pawn");
 
-  Edward = new Piece(
+  let Edward = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -283,7 +251,7 @@ function createPieces() {
   );
   Edward.renderPiece("e2", "pawn");
 
-  Frankie = new Piece(
+  let Frankie = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -292,7 +260,7 @@ function createPieces() {
   );
   Frankie.renderPiece("f2", "pawn");
 
-  George = new Piece(
+  let George = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -301,7 +269,7 @@ function createPieces() {
   );
   George.renderPiece("g2", "pawn");
 
-  Harry = new Piece(
+  let Harry = new Piece(
     "white",
     "pawn",
     "./assets/white-pawn.png",
@@ -311,7 +279,7 @@ function createPieces() {
   Harry.renderPiece("h2", "pawn");
 
   //white pieces
-  whiteARook = new Piece(
+  let whiteARook = new Piece(
     "white",
     "rook",
     "./assets/white-rook.png",
@@ -320,7 +288,7 @@ function createPieces() {
   );
   whiteARook.renderPiece("a1", "rook");
 
-  whiteBKnight = new Piece(
+  let whiteBKnight = new Piece(
     "white",
     "knight",
     "./assets/white-knight.png",
@@ -329,7 +297,7 @@ function createPieces() {
   );
   whiteBKnight.renderPiece("b1", "knight");
 
-  whiteGKnight = new Piece(
+  let whiteGKnight = new Piece(
     "white",
     "knight",
     "./assets/white-knight.png",
@@ -338,7 +306,7 @@ function createPieces() {
   );
   whiteGKnight.renderPiece("g1", "knight");
 
-  whiteLightBishop = new Piece(
+  let whiteLightBishop = new Piece(
     "white",
     "bishop",
     "./assets/white-bishop.png",
@@ -347,7 +315,7 @@ function createPieces() {
   );
   whiteLightBishop.renderPiece("c1", "bishop");
 
-  whiteQueen = new Piece(
+  let whiteQueen = new Piece(
     "white",
     "queen",
     "./assets/white-queen.png",
@@ -356,7 +324,7 @@ function createPieces() {
   );
   whiteQueen.renderPiece("d1", "queen");
 
-  whiteKing = new Piece(
+  let whiteKing = new Piece(
     "white",
     "king",
     "./assets/white-king.png",
@@ -365,7 +333,7 @@ function createPieces() {
   );
   whiteKing.renderPiece("e1", "king");
 
-  whiteDarkBishop = new Piece(
+  let whiteDarkBishop = new Piece(
     "white",
     "bishop",
     "./assets/white-bishop.png",
@@ -374,7 +342,7 @@ function createPieces() {
   );
   whiteDarkBishop.renderPiece("f1", "bishop");
 
-  whiteHRook = new Piece(
+  let whiteHRook = new Piece(
     "white",
     "rook",
     "./assets/white-rook.png",
@@ -404,13 +372,17 @@ function selectPiece() {
   );
 }
 
+//select square to move selected piece to
 function selectSquare() {
   document.addEventListener("click", (e) => {
     targetSquare = e.target;
+    //If no piece on square, move piece to that square
     if (!targetSquare.hasChildNodes()) {
       console.log(`moved ${selectedPiece.id} to ${targetSquare.id}`);
       targetSquare.append(selectedPiece);
       selectedPiece = null;
+      turnNum++;
+      whoseTurn();
       selectPiece();
     } else if (
       targetSquare.hasChildNodes() &&
@@ -421,71 +393,25 @@ function selectSquare() {
       targetPiece.remove();
       targetSquare.append(selectedPiece);
       selectedPiece = null;
+      turnNum++;
+      whoseTurn();
       selectPiece();
     }
   });
 }
 
-function checkCapture() {}
-
-function playGame() {
+//Display whose turn it is as an h2 element
+function whoseTurn() {
   let turnText = document.getElementById("whoseTurn");
-  //if white turn
-  turnText.innerHTML = "<h2>White to move</h2>";
+  if (turnNum % 2 == 0) {
+    turnText.innerHTML = "<h2>White to move</h2>";
+  } else {
+    turnText.innerHTML = "<h2>Black to move</h2>";
+  }
 }
 
 createBoard();
 createPieces();
 selectPiece();
 selectSquare();
-playGame();
-
-//Capturing pieces
-//if square contains piece, check if opposite color and remove
-
-//Function to check whose turn it is then call select square each time?
-/*
-let currentTurn = 0;
-
-//white turn
-if (currentTurn === 0) {
-  whiteTurn();
-  currentTurn++;
-} else {
-  blackTurn();
-  currentTurn--;
-}
-*/
-
-//Need functions for: who's turn, what piece is clicked, what legal moves it has, moving piece, capturing pieces, is in check?/mate?/stalemate?, work on two clicks + drag/drop
-//Update board position?
-
-//Code from cody
-/*const pieces = [{
-        "black",
-        "pawn",
-        "./assets/black-pawn.png",
-        "h7",
-        "blkHPawn"
-    },
-    {
-        "black",
-        "rook",
-        "./assets/black-rook.png",
-        "a8",
-        "blkARook"
-    },
-    {
-        "black",
-        "knight",
-        "./assets/black-knight.png",
-        "b8",
-        "blkBKnight"
-    }
-]
-
-for(let i = 0; i<pieces.length; i++){
-    const newPiece =  new Piece(piece[i]);
-    newPiece.append(newPiece)
-}
-*/
+whoseTurn();
