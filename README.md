@@ -10,3 +10,4 @@ Todo:
 -Add sounds for above scenarios
 
 Source for chess pieces: https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
+Source for sounds: https://github.com/lichess-org/lila/tree/38bfadac3e319516341771086e8edc594d4d4b07/public/sound
