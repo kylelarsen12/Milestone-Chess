@@ -65,7 +65,7 @@ img {
   z-index: 15;
   background: transparent;
   left: 400px;
-  top: 336px;
+  top: 328px;
 }
 
 #blackCapturedPieces {
@@ -76,7 +76,7 @@ img {
   z-index: 15;
   background: transparent;
   left: 400px;
-  top: -200px;
+  top: -225px;
 }
 
 #whiteCapturedPieces img {
